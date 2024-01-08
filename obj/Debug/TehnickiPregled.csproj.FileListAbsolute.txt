@@ -1,0 +1,14 @@
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.csproj.AssemblyReference.cache
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.LoginForm.resources
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.Properties.Resources.resources
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.csproj.GenerateResource.cache
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.csproj.CoreCompileInputs.cache
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\bin\Debug\TehnickiPregled.exe.config
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\bin\Debug\TehnickiPregled.exe
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\bin\Debug\TehnickiPregled.pdb
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.exe
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.pdb
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.MainForm.resources
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.AdminPanelForm.resources
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.AdminPrikazStatistikeForm.resources
+C:\Users\rmusv\OneDrive\Desktop\Visual Studio projekti\TehnickiPregled\obj\Debug\TehnickiPregled.AdminUpravljanjeNalozimaForm.resources
