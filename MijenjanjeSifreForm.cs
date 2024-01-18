@@ -22,25 +22,40 @@ namespace TehnickiPregled
 
         private void button1_Click(object sender, EventArgs e)
         {
-            using (SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False"))
+            if (textBox2.Text.Length >= 8)
             {
-                conn.Open();
+                using (SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False"))
+                {
+                    conn.Open();
 
-                SqlCommand cmd = new SqlCommand("UPDATE login SET password = @newpassword WHERE username = @username AND password = @password", conn);
+                    SqlCommand cmd = new SqlCommand("UPDATE login SET password = @newpassword WHERE username = @username AND password = @password", conn);
 
-                cmd.Parameters.AddWithValue("@username", Properties.Settings.Default.logedinuser);
-                cmd.Parameters.AddWithValue("@password", textBox1.Text);
-                cmd.Parameters.AddWithValue("@newpassword", textBox2.Text);
+                    cmd.Parameters.AddWithValue("@username", Properties.Settings.Default.logedinuser);
+                    cmd.Parameters.AddWithValue("@password", textBox1.Text);
+                    cmd.Parameters.AddWithValue("@newpassword", textBox2.Text);
 
-                cmd.ExecuteNonQuery();
+                    cmd.ExecuteNonQuery();
+                }
+                MessageBox.Show("Nova sifra je sacuvana");
+            } else
+            {
+                MessageBox.Show("Nova sifra mora biti duga najmanje 8 karaktera");
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            AdminPanelForm apf = new AdminPanelForm();
-            apf.Show();
-            this.Hide();
+            if (Properties.Settings.Default.usertype == "admin")
+            {
+                AdminPanelForm apf = new AdminPanelForm();
+                apf.Show();
+                this.Hide();
+            } else
+            {
+                MainForm mf = new MainForm();
+                mf.Show();
+                this.Hide();
+            }
         }
     }
 }

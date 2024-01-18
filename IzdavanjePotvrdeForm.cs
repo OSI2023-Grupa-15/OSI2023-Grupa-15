@@ -52,11 +52,12 @@ namespace TehnickiPregled
             dataGridView1.Columns.Add("radnik", "Tehnicar");
             dataGridView1.Columns.Add("prolaznost", "Prolaznost");
             dataGridView1.Columns.Add("proizvodjac", "Marka auta");
+            dataGridView1.Columns.Add("registracija", "Registarski broj vozila");
             dataGridView1.Columns.Add("brojsasije", "Broj sasije");
 
             while (reader.Read())
             {
-                dataGridView1.Rows.Add(reader["hash"], reader["vlasnik"], reader["jmbg"], reader["vrijeme"], reader["radnik"], reader["prolaznost"], reader["proizvodjac"], reader["brojsasije"]);
+                dataGridView1.Rows.Add(reader["hash"], reader["vlasnik"], reader["jmbg"], reader["vrijeme"], reader["radnik"], reader["prolaznost"], reader["proizvodjac"], reader["registracija"],  reader["brojsasije"]);
             }
 
             dataGridView1.Sort(dataGridView1.Columns["vrijeme"], ListSortDirection.Ascending);
@@ -76,7 +77,7 @@ namespace TehnickiPregled
 
             if (dt.Rows.Count > 0) {
 
-                string directoryPath = "potvrde na zahtjev";
+                string directoryPath = @"C:\POTVRDE ZA TEHNICKI PREGLED";
                 string filePath = Path.Combine(directoryPath, textBox1.Text + ".txt");
 
                 Directory.CreateDirectory(directoryPath);
@@ -84,11 +85,13 @@ namespace TehnickiPregled
                 using (StreamWriter writetext = new StreamWriter(filePath))
                 {
                     writetext.WriteLine("POTVRDA O IZVRSAVANJU TEHNICKOG PREGLEDA");
-                    writetext.WriteLine("Jedinstvena sifra dokumenta: " + dt.Rows[0]["hash"].ToString());
+                    writetext.WriteLine("*Potvrda traje 30 dana od izvrsavanja pregleda*"); 
+                    writetext.WriteLine("Jedinstvena sifra pregleda: " + dt.Rows[0]["hash"].ToString());
                     writetext.WriteLine("Vlasnik vozila: " + dt.Rows[0]["vlasnik"].ToString());
                     writetext.WriteLine("Jmbg: " + dt.Rows[0]["jmbg"].ToString());
                     writetext.WriteLine("Datum i vrijeme pregleda: " + dt.Rows[0]["vrijeme"].ToString());
                     writetext.WriteLine("Tehnicar koji je obavljao tehnicki pregled: " + dt.Rows[0]["radnik"].ToString());
+                    writetext.WriteLine("Registarski broj vozila: " + dt.Rows[0]["registracija"].ToString());
                     writetext.WriteLine("Broj sasije vozila: " + dt.Rows[0]["brojsasije"].ToString());
                     writetext.WriteLine("Proizvodjac vozila: " + dt.Rows[0]["proizvodjac"].ToString());
                     writetext.WriteLine("Model vozila: " + dt.Rows[0]["model"].ToString());

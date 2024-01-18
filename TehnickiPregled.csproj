@@ -52,17 +52,35 @@
     <Compile Include="AdminPanelForm.Designer.cs">
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="AdminPrikazStatistikeForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AdminPrikazStatistikeForm.Designer.cs">
-      <DependentUpon>AdminPrikazStatistikeForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="AdminUpravljanjeNalozimaForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AdminUpravljanjeNalozimaForm.Designer.cs">
       <DependentUpon>AdminUpravljanjeNalozimaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="BrisanjeTerminaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="BrisanjeTerminaForm.Designer.cs">
+      <DependentUpon>BrisanjeTerminaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="GeneralnaStatistikaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GeneralnaStatistikaForm.Designer.cs">
+      <DependentUpon>GeneralnaStatistikaForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IzdavanjePotvrdeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzdavanjePotvrdeForm.Designer.cs">
+      <DependentUpon>IzdavanjePotvrdeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IzmjenaTerminaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="IzmjenaTerminaForm.Designer.cs">
+      <DependentUpon>IzmjenaTerminaForm.cs</DependentUpon>
     </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
@@ -76,22 +94,73 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MijenjanjeSifreForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MijenjanjeSifreForm.Designer.cs">
+      <DependentUpon>MijenjanjeSifreForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledBiranjeTermina.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledBiranjeTermina.Designer.cs">
+      <DependentUpon>PregledBiranjeTermina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledUnosPodataka.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledUnosPodataka.Designer.cs">
+      <DependentUpon>PregledUnosPodataka.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PregledUnosPodataka2Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PregledUnosPodataka2Form.Designer.cs">
+      <DependentUpon>PregledUnosPodataka2Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UpravljanjeTerminimaForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UpravljanjeTerminimaForm.Designer.cs">
+      <DependentUpon>UpravljanjeTerminimaForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AdminPanelForm.resx">
       <DependentUpon>AdminPanelForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="AdminPrikazStatistikeForm.resx">
-      <DependentUpon>AdminPrikazStatistikeForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="AdminUpravljanjeNalozimaForm.resx">
       <DependentUpon>AdminUpravljanjeNalozimaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BrisanjeTerminaForm.resx">
+      <DependentUpon>BrisanjeTerminaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="GeneralnaStatistikaForm.resx">
+      <DependentUpon>GeneralnaStatistikaForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzdavanjePotvrdeForm.resx">
+      <DependentUpon>IzdavanjePotvrdeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="IzmjenaTerminaForm.resx">
+      <DependentUpon>IzmjenaTerminaForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MijenjanjeSifreForm.resx">
+      <DependentUpon>MijenjanjeSifreForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledBiranjeTermina.resx">
+      <DependentUpon>PregledBiranjeTermina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledUnosPodataka.resx">
+      <DependentUpon>PregledUnosPodataka.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PregledUnosPodataka2Form.resx">
+      <DependentUpon>PregledUnosPodataka2Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -102,6 +171,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UpravljanjeTerminimaForm.resx">
+      <DependentUpon>UpravljanjeTerminimaForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -29,11 +29,17 @@ namespace TehnickiPregled
             {
                 if (dt.Rows[0]["usertype"].ToString() == "user")
                 {
+                    Properties.Settings.Default.logedinuser = txtBoxUsername.Text;
+                    Properties.Settings.Default.usertype = dt.Rows[0]["usertype"].ToString();
+                    Properties.Settings.Default.Save();
                     MainForm mf = new MainForm();
                     mf.Show();
                     this.Hide();
                 } else if (dt.Rows[0]["usertype"].ToString() == "admin")
                 {
+                    Properties.Settings.Default.logedinuser = txtBoxUsername.Text;
+                    Properties.Settings.Default.usertype = dt.Rows[0]["usertype"].ToString();
+                    Properties.Settings.Default.Save();
                     AdminPanelForm apf = new AdminPanelForm();
                     apf.Show();
                     this.Hide();

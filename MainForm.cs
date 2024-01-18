@@ -40,5 +40,19 @@ namespace TehnickiPregled
             msf.Show();
             this.Hide();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            PregledBiranjeTermina pbt = new PregledBiranjeTermina();
+            pbt.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            IzdavanjePotvrdeForm ipf = new IzdavanjePotvrdeForm();
+            ipf.Show();
+            this.Hide();
+        }
     }
 }

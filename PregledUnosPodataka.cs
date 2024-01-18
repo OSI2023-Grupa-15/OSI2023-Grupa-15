@@ -49,9 +49,17 @@ namespace TehnickiPregled
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (comboBox1.Text.Length <= 0 || comboBox2.Text.Length <= 0 || comboBox3.Text.Length <= 0 || comboBox4.Text.Length <= 0 || comboBox5.Text.Length <= 0 || textBox2.Text.Length <= 0 || textBox6.Text.Length <= 0 || textBox7.Text.Length <= 0)
+            if (comboBox1.Text.Length <= 0 || comboBox2.Text.Length <= 0 || comboBox3.Text.Length <= 0 || comboBox4.Text.Length <= 0 || comboBox5.Text.Length <= 0 || comboBox6.Text.Length <= 0 || textBox2.Text.Length <= 0 || textBox6.Text.Length <= 0 || textBox7.Text.Length <= 0)
             {
                 MessageBox.Show("Popunite sva polja");
+            }
+            else if (textBox7.Text.Length < 17)
+            {
+                MessageBox.Show("Nepravilan unos broja sasije");
+            }
+            else if(comboBox6.Text != "Nije registrovano" && (!char.IsUpper(comboBox6.Text[0]) || !char.IsUpper(comboBox6.Text[3]) || !char.IsDigit(comboBox6.Text[1]) || !char.IsDigit(comboBox6.Text[2]) || !char.IsDigit(comboBox6.Text[4]) | !char.IsDigit(comboBox6.Text[5]) || !char.IsDigit(comboBox6.Text[6])) || comboBox6.Text.Length > 7)
+            {
+                MessageBox.Show("Neispravan unos registarskog broja, sva slova u registarskom broju moraju biti velika");
             }
             else
             {
@@ -65,6 +73,7 @@ namespace TehnickiPregled
                 Properties.Settings.Default.gorivo = comboBox5.Text;
                 Properties.Settings.Default.zapremina = textBox6.Text;
                 Properties.Settings.Default.brojsasije = textBox7.Text;
+                Properties.Settings.Default.registracija = comboBox6.Text;
 
                 PregledUnosPodataka2Form pup2f = new PregledUnosPodataka2Form();
                 pup2f.Show();

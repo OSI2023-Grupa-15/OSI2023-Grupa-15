@@ -34,14 +34,32 @@ namespace TehnickiPregled
             }
             else
             {
+                Random rand = new Random();
+
+                int stringlen = 8;
+                int randValue;
+                string str = "";
+                char letter;
+                for (int i = 0; i < stringlen; i++)
+                {
+                    randValue = rand.Next(0, 26);
+                    letter = Convert.ToChar(randValue + 65);
+
+                    str = str + letter;
+                }
+
                 string prolaznost = "";
+                bool prolaznostbit = false;
                 if (comboBox1.Text != "Ispravno" || comboBox2.Text != "Ispravno" || comboBox3.Text != "Ispravno" || comboBox4.Text != "Ispravno" || comboBox5.Text != "Ispravno" || comboBox6.Text != "Ispravno" || comboBox7.Text != "Ispravno" || comboBox8.Text != "Ispravno" || comboBox9.Text != "Ispravno" || comboBox10.Text != "Ispravno" || comboBox11.Text != "Ispravno" || comboBox12.Text != "Ispravno" || comboBox13.Text != "Ispravno" || comboBox14.Text != "Ispravno" || comboBox15.Text != "Ispravno" || comboBox16.Text != "Ispravno" || comboBox17.Text != "Ispravno")
                 {
                     prolaznost = "Nije prosao";
+                   
                 } else
                 {
                     prolaznost = "Prosao";
+                    prolaznostbit = true;
                 }
+
                 SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False");
                 conn.Open();
                 SqlCommand ncmd = new SqlCommand("SELECT * FROM termini WHERE rednibroj = '"+ Properties.Settings.Default.brojtermina +"'", conn);
@@ -49,8 +67,12 @@ namespace TehnickiPregled
                 DataTable dt = new DataTable();
                 sda.Fill(dt);
                 DateTime vrijemetermina = (DateTime)dt.Rows[0]["vrijeme"];
-                SqlCommand cmd = new SqlCommand("INSERT INTO pregledi (vlasnik, jmbg, vrijeme, kategorija, proizvodjac, model, godina, boja, gorivo, zapremina, brojsasije, ispravnostUpravljanje, ispravnostKocenje, ispravnostOsvjetljenje, ispravnostVidljivost, ispravnostSamonosivost, ispravnostTockovi, ispravnostMotor, ispravnostBuka, ispravnostElektronike, ispravnostPrijenos, ispravnostKontrolniUredjaji, ispravnostGasovi, ispravnostSpajanje, ispravnostOsnovniDijelovi, ispravnostOprema, ispravnostTablice, ispravnostGasneInstalacije, prolaznost, radnik) VALUES ('"+ Properties.Settings.Default.vlasnik + "', '"+ Properties.Settings.Default.jmbg + "', '" + vrijemetermina + "', '" + Properties.Settings.Default.kategorija + "', '"+ Properties.Settings.Default.proizvodjac + "', '"+ Properties.Settings.Default.model + "', '"+ Properties.Settings.Default.godinaproizvodnje + "', '"+ Properties.Settings.Default.boja + "', '"+ Properties.Settings.Default.gorivo + "', '"+ Properties.Settings.Default.zapremina + "', '"+ Properties.Settings.Default.brojsasije + "', '" + comboBox1.Text + "', '"+ comboBox2.Text + "', '"+ comboBox3.Text + "', '"+ comboBox4.Text + "', '"+ comboBox5.Text + "', '"+ comboBox6.Text + "', '"+ comboBox7.Text + "', '"+ comboBox8.Text + "', '"+ comboBox9.Text + "', '"+ comboBox10.Text + "', '"+ comboBox11.Text + "', '"+ comboBox12.Text + "', '"+ comboBox13.Text + "', '"+ comboBox14.Text + "', '"+ comboBox15.Text + "', '"+ comboBox16.Text + "', '"+ comboBox17.Text + "', '"+ prolaznost + "', '"+ Properties.Settings.Default.logedinuser + "')", conn);
+                SqlCommand tcmd = new SqlCommand("UPDATE termini SET status = 'obradjen', radnik = '"+ Properties.Settings.Default.logedinuser +"' WHERE rednibroj = '"+ Properties.Settings.Default.brojtermina +"'", conn);
+                SqlCommand cmd = new SqlCommand("INSERT INTO pregledi (vlasnik, jmbg, vrijeme, kategorija, proizvodjac, model, godina, boja, gorivo, zapremina, brojsasije, ispravnostUpravljanje, ispravnostKocenje, ispravnostOsvjetljenje, ispravnostVidljivost, ispravnostSamonosivost, ispravnostTockovi, ispravnostMotor, ispravnostBuka, ispravnostElektronike, ispravnostPrijenos, ispravnostKontrolniUredjaji, ispravnostGasovi, ispravnostSpajanje, ispravnostOsnovniDijelovi, ispravnostOprema, ispravnostTablice, ispravnostGasneInstalacije, prolaznost, radnik, hash, registracija) VALUES ('"+ Properties.Settings.Default.vlasnik + "', '"+ Properties.Settings.Default.jmbg + "', '" + vrijemetermina + "', '" + Properties.Settings.Default.kategorija + "', '"+ Properties.Settings.Default.proizvodjac + "', '"+ Properties.Settings.Default.model + "', '"+ Properties.Settings.Default.godinaproizvodnje + "', '"+ Properties.Settings.Default.boja + "', '"+ Properties.Settings.Default.gorivo + "', '"+ Properties.Settings.Default.zapremina + "', '"+ Properties.Settings.Default.brojsasije + "', '" + comboBox1.Text + "', '"+ comboBox2.Text + "', '"+ comboBox3.Text + "', '"+ comboBox4.Text + "', '"+ comboBox5.Text + "', '"+ comboBox6.Text + "', '"+ comboBox7.Text + "', '"+ comboBox8.Text + "', '"+ comboBox9.Text + "', '"+ comboBox10.Text + "', '"+ comboBox11.Text + "', '"+ comboBox12.Text + "', '"+ comboBox13.Text + "', '"+ comboBox14.Text + "', '"+ comboBox15.Text + "', '"+ comboBox16.Text + "', '"+ comboBox17.Text + "', '"+ prolaznost + "', '"+ Properties.Settings.Default.logedinuser + "', '"+ str +"', '"+ Properties.Settings.Default.registracija +"')", conn);
+                SqlCommand fcmd = new SqlCommand("INSERT INTO RezultatiTehnickog (BrSasije, RezultatTehnickog, Datum) VALUES ('"+ Properties.Settings.Default.brojsasije +"', '"+ prolaznostbit +"', CONVERT(DATE, '"+ vrijemetermina +"'))", conn);
+                fcmd.ExecuteNonQuery();
                 cmd.ExecuteNonQuery();
+                tcmd.ExecuteNonQuery();
                 conn.Close();
                 MessageBox.Show("Rezultati pregleda su arhivirani");
                 MainForm mf = new MainForm();

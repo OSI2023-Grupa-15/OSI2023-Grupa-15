@@ -59,11 +59,29 @@ namespace TehnickiPregled
 
         private void button4_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("INSERT INTO login (username, password, usertype) VALUES ('" + txtime.Text + "', '" + txtsifra.Text + "', '" + txttip.Text + "')", conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (txtime.Text.Length > 0 && txtsifra.Text.Length > 8 && comboBox1.SelectedItem != null && comboBox1.SelectedItem.ToString().Length > 0)
+            {
+                SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False");
+                SqlCommand ncmd = new SqlCommand("select * from login where username='" + txtime.Text + "'", conn);
+                SqlDataAdapter sda = new SqlDataAdapter(ncmd);
+                DataTable dt = new DataTable();
+                sda.Fill(dt);
+                if (dt.Rows.Count <= 0)
+                {
+                    conn.Open();
+                    SqlCommand cmd = new SqlCommand("INSERT INTO login (username, password, usertype) VALUES ('" + txtime.Text + "', '" + txtsifra.Text + "', '" + comboBox1.SelectedItem.ToString() + "')", conn);
+                    cmd.ExecuteNonQuery();
+                    conn.Close();
+                    MessageBox.Show("Napravljen je novi nalog");
+                }
+                else
+                {
+                    MessageBox.Show("Nalog sa tim korisnickim imenom vec postoji");
+                }
+            } else
+            {
+                MessageBox.Show("Svako polje mora biti popunjeno i sifra mora biti duga najmanje 8 karaktera");
+            }
         }
 
         private void button5_Click(object sender, EventArgs e)
@@ -76,7 +94,7 @@ namespace TehnickiPregled
 
                 cmd.Parameters.AddWithValue("@username", txtime.Text);
                 cmd.Parameters.AddWithValue("@password", txtsifra.Text);
-                cmd.Parameters.AddWithValue("@usertype", txttip.Text);
+                cmd.Parameters.AddWithValue("@usertype", comboBox1.SelectedItem.ToString());
 
                 cmd.ExecuteNonQuery();
             }
@@ -84,11 +102,23 @@ namespace TehnickiPregled
 
         private void button6_Click(object sender, EventArgs e)
         {
-            SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False");
-            conn.Open();
-            SqlCommand cmd = new SqlCommand("DELETE FROM login WHERE username = '" + txtime.Text + "' AND password = '"+txtsifra.Text+"' AND usertype = '"+txttip.Text+"'", conn);
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            if (txtime.Text != Properties.Settings.Default.logedinuser)
+            {
+                SqlConnection conn = new SqlConnection("Data Source=VUKOV-KOMPJUTOR\\SQLEXPRESS;Initial Catalog=TehnickiPregledLogin;Integrated Security=True;Encrypt=False");
+                conn.Open();
+                SqlCommand cmd = new SqlCommand("DELETE FROM login WHERE username = '" + txtime.Text + "' AND password = '" + txtsifra.Text + "' AND usertype = '" + comboBox1.SelectedItem.ToString() + "'", conn);
+                cmd.ExecuteNonQuery();
+                conn.Close();
+                MessageBox.Show("Izbrisali ste zeljeni nalog");
+            } else
+            {
+                MessageBox.Show("Ne mozete izbrisati nalog na kojem ste trenutno ulogovani");
+            }
+        }
+
+        private void AdminUpravljanjeNalozimaForm_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -15,6 +15,9 @@ namespace TehnickiPregled
         public AdminPanelForm()
         {
             InitializeComponent();
+
+            label1.Text = Properties.Settings.Default.logedinuser;
+            label2.Text = Properties.Settings.Default.usertype;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -26,8 +29,8 @@ namespace TehnickiPregled
 
         private void button3_Click(object sender, EventArgs e)
         {
-            AdminPrikazStatistikeForm apsf = new AdminPrikazStatistikeForm();
-            apsf.Show();
+            GeneralnaStatistikaForm gsf = new GeneralnaStatistikaForm();
+            gsf.Show();
             this.Hide();
         }
 
@@ -35,6 +38,13 @@ namespace TehnickiPregled
         {
             AdminUpravljanjeNalozimaForm aunf = new AdminUpravljanjeNalozimaForm();
             aunf.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            MijenjanjeSifreForm msf = new MijenjanjeSifreForm();
+            msf.Show();
             this.Hide();
         }
     }
